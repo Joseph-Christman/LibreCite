@@ -5,17 +5,23 @@ citations for books, movies, and more.
 ### The Layout Plan
     
 Screen 1:
+
     -New Project
+
     -Open Project
 
 Screen 2:
+
     -a way to view completed citations
+
     -add citations
 
 Screen 3:
+
     -Select between citation styles
 
 Screen 4:
+
     -fill out information for citation
 
 ### Must have Features

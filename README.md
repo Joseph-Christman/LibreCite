@@ -1,6 +1,6 @@
 # LibreCite
 Librecite will be a QT app that provides a free and libre way to produce
-citations for books, movies, and more. 
+citations of books, websites, and more. 
 
 ### The Layout Plan
     
