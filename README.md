@@ -2,7 +2,7 @@
 Librecite will be a QT app that provides a free and libre way to produce
 citations for books, movies, and more. 
 
-###The Layout Plan
+### The Layout Plan
     
 Screen 1:
     -New Project
@@ -18,7 +18,7 @@ Screen 3:
 Screen 4:
     -fill out information for citation
 
-###Must have Features
+### Must have Features
 
 -Support for MLA, APA, and my personal internal citation style.
 
@@ -27,7 +27,7 @@ native support for that)
 
 -The basic format in the layout plan
 
-###Stretch Goals
+### Stretch Goals
 
 -Automatic archiving of websites
 
