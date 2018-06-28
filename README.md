@@ -42,3 +42,5 @@ native support for that)
 -Support for more citation formats
 
 -A self-hostable web app version
+
+-Snap/Flatpak support?
