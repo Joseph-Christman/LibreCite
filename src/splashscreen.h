@@ -4,7 +4,8 @@
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
-class QPushutton;
+class VQBoxLayout;
+class QPushButton;
 QT_END_NAMESPACE
 
 class SplashScreen : public QMainWindow
@@ -12,11 +13,11 @@ class SplashScreen : public QMainWindow
     Q_OBJECT
 
 public:
-    mainWindow();
+    splashScreen();
 
 private slots:
 
 private:
-
-
+    QPushButton * newButton;
+    QPushButton * openButton;
 };
