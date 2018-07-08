@@ -1,4 +1,3 @@
-
 QT += widgets
 
 TEMPLATE = app
