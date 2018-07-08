@@ -6,5 +6,5 @@ INCLUDEPATH += .
 
 DEFINES += QT_DEPRECATED_WARNINGS
 
-HEADERS += splashscreen.h
-SOURCES += main.cpp splashscreen.cpp
+HEADERS += splashscreen.h mainwindow.h
+SOURCES += main.cpp splashscreen.cpp mainwindow.cpp
