@@ -24,6 +24,15 @@ Screen 4:
 
     -fill out information for citation
 
+### Compilation Instructions
+WARNING: APPLICATION ISN'T DONE AND THESE INSTRUCTIONS ARE REALLY ROUGH.
+INSTRUCTIONS WILL BE UPDATED IN THE NEAR FUTURE.
+
+To obtain a Makefile, type `qmake -o Makefile librecalc.pro` while
+you are in the src directory.
+
+To compile the program, type `make`.
+
 ### Must have Features
 
 -Support for MLA, APA, and my personal internal citation style.
