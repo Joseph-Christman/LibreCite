@@ -2,7 +2,7 @@
 
 #include "splashscreen.h"
 
-SplashScreen::splashScreen()
+SplashScreen::SplashScreen(QWidget * parent) : QWidget(parent)
 {
     openButton = new QPushButton(tr("&Open Project"));
     

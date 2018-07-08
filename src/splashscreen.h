@@ -8,12 +8,12 @@ class VQBoxLayout;
 class QPushButton;
 QT_END_NAMESPACE
 
-class SplashScreen : public QMainWindow
+class SplashScreen : public QWidget
 {
     Q_OBJECT
 
 public:
-    splashScreen();
+    SplashScreen(QWidget * parent = 0);
 
 private slots:
 
@@ -21,3 +21,5 @@ private:
     QPushButton * newButton;
     QPushButton * openButton;
 };
+
+#endif
