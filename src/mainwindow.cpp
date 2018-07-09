@@ -3,7 +3,7 @@
 #include "mainwindow.h"
 
 MainWindow::MainWindow(const QString &fileName) : 
-    mainLayout(new QVBoxLayout)
+    placeholder(new QPushButton("Text"))
 {
-    setLayout(mainLayout);
+    setCentralWidget(placeholder);
 }

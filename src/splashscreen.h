@@ -16,6 +16,7 @@ public:
     SplashScreen(QWidget * parent = 0);
 
 private slots:
+    void newProject();
 
 private:
     QPushButton * newButton;

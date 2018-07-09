@@ -36,6 +36,7 @@ private:
     */
 
     QVBoxLayout * mainLayout;
+    QPushButton * placeholder;
     QString curFile;
 
 };
