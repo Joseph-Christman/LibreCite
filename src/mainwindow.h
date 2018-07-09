@@ -13,31 +13,28 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(const QString &fileName);
-    /*
-    void loadProject(const QString &fileName);
+    //void loadProject(const QString &fileName);
 
 protected:
-    void closeEvent(QCloseEvent * event) override;
+    //void closeEvent(QCloseEvent * event) override;
 
 private slots:
-    void newProject();
-    void open();
-    bool save();
-    bool saveAs();
+    //void newProject();
+    //void open();
+    //bool save();
+    //kbool saveAs();
     void about();
 
 private:
     void createActions();
-    void createStatusBar();
-    void readSettings();
-    bool maybeSave();
-    bool saveFile(const QString &fileNAme);
-    QString strippedName(const QString &fullFileName);
-    */
+    //void createStatusBar();
+    //void readSettings();
+    //bool maybeSave();
+    //bool saveFile(const QString &fileNAme);
+    //QString strippedName(const QString &fullFileName);
 
-    QVBoxLayout * mainLayout;
-    QPushButton * placeholder;
-    QString curFile;
+    QWidget * placeholder;
+    //QString curFile;
 
 };
 
