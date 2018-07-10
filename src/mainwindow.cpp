@@ -65,7 +65,6 @@ void MainWindow::createActions()
     copyAct->setStatusTip(tr("Copy the current selection's contents to"
                              " the clipboard"));
     editMenu->addAction(copyAct);
-                      
 
     QAction * pasteAct = new QAction(tr("&Paste"), this);
     pasteAct->setShortcuts(QKeySequence::Paste);
@@ -76,5 +75,16 @@ void MainWindow::createActions()
     menuBar()->addSeparator();
 
 #endif
+
+    QMenu * helpMenu = menuBar()->addMenu(tr("&Help"));
+    QAction * aboutAct = helpMenu->addAction(tr("&About"), 
+                                             this, 
+                                             &MainWindow::about);
+    aboutAct->setStatusTip(tr("Show the application's About box"));
+
+    QAction * aboutQtAct = helpMenu->addAction(tr("About &Qt"), qApp,
+                                               &QApplication::aboutQt);
+
+    aboutQtAct->setStatusTip(tr("Show the Qt Library's About Box"));
 
 }
