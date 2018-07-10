@@ -50,4 +50,31 @@ void MainWindow::createActions()
     exitAct->setStatusTip(tr("Exit the applicaton"));
     fileMenu->addAction(exitAct);
 
+    QMenu * editMenu = menuBar()->addMenu(tr("&Edit"));
+
+#ifndef QT_NO_CLIPBOARD
+
+    QAction * cutAct = new QAction(tr("Cu&t"), this);
+    cutAct->setShortcuts(QKeySequence::Cut);
+    cutAct->setStatusTip(tr("Cut the current selection's contents to"
+                            " the clipboard"));
+    editMenu->addAction(cutAct);
+
+    QAction * copyAct = new QAction(tr("&Copy"));
+    copyAct->setShortcuts(QKeySequence::Copy);
+    copyAct->setStatusTip(tr("Copy the current selection's contents to"
+                             " the clipboard"));
+    editMenu->addAction(copyAct);
+                      
+
+    QAction * pasteAct = new QAction(tr("&Paste"), this);
+    pasteAct->setShortcuts(QKeySequence::Paste);
+    pasteAct->setStatusTip(tr("paste the clipboard's contents into the"
+                              " current slection"));
+    editMenu->addAction(pasteAct);
+
+    menuBar()->addSeparator();
+
+#endif
+
 }
