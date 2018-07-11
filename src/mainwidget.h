@@ -1,6 +1,8 @@
 #ifndef MAINWIDGET_H
 #define MAINWIDGET_H
 
+#include <QWidget>
+
 QT_BEGIN_NAMESPACE
 class QVBoxLayout;
 QT_END_NAMESPACE
@@ -10,12 +12,12 @@ class MainWidget : public QWidget
     Q_OBJECT
 
 public:
-    MainWidget();
+    MainWidget(QWidget * parent);
 
 private:
-    void create_layouts();
+    void createLayouts();
 
-    QVBoxLayout mainLayout;
-    QVBoxLayout buttonLayout;
+    QVBoxLayout * mainLayout;
+    QVBoxLayout * buttonLayout;
 };
 #endif

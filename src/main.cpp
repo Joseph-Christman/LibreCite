@@ -16,7 +16,4 @@ int main(int argc, char ** argv)
     SplashScreen splashScreen;
     splashScreen.show();
     return app.exec();
-
-
-
 }

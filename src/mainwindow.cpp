@@ -1,11 +1,13 @@
 #include <QtWidgets>
 
 #include "mainwindow.h"
+#include "mainwidget.h"
 
-MainWindow::MainWindow(const QString &fileName) : 
-    placeholder(new QWidget)
+MainWindow::MainWindow(const QString &fileName)
 {
-    setCentralWidget(placeholder);
+
+    MainWidget * mainWidget = new MainWidget(this);
+    setCentralWidget(mainWidget);
 
     createActions();
     
