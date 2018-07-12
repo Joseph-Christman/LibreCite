@@ -1,10 +1,12 @@
 #include <QtWidgets>
 
 #include "mainwidget.h"
+#include "citationselectionwindow.h"
 
 MainWidget::MainWidget(QWidget * parent)
 {
     createLayouts();
+
 
 
 }
@@ -15,6 +17,7 @@ void MainWidget::createLayouts()
     QPushButton * addCitationButton = new QPushButton(tr("Add Citation"));
     QPushButton * removeCitationButton = new QPushButton(tr("Remove " 
                                                             "Citation"));
+    connect(addCitationButton, SIGNAL(clicked()), this, SLOT(newCitation()));
 
     addRemoveLayout->addWidget(addCitationButton);
     addRemoveLayout->addWidget(removeCitationButton);
@@ -38,4 +41,10 @@ void MainWidget::createLayouts()
     mainLayout->addWidget(scrollArea);
 
     setLayout(mainLayout);
+}
+
+void MainWidget::newCitation()
+{
+    CitationSelectionWindow * citationSelectionWindow = new CitationSelectionWindow(this);
+    citationSelectionWindow->show();
 }
