@@ -8,6 +8,7 @@ MainWidget::MainWidget(QWidget * parent)
     createLayouts();
 
 
+
 }
 
 void MainWidget::createLayouts()
