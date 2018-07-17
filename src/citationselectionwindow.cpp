@@ -8,4 +8,7 @@ CitationSelectionWindow::CitationSelectionWindow(QWidget * parent) :
 {
     CitationSelectionWidget * citationSelectionWidget = \
         new CitationSelectionWidget(this);
+
+    setCentralWidget(citationSelectionWidget);
+
 }
