@@ -14,6 +14,9 @@ class MainWidget : public QWidget
 public:
     MainWidget(QWidget * parent);
 
+private slots:
+    void addCitation();
+
 private:
     void createLayouts();
 
