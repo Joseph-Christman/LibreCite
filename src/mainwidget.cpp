@@ -1,7 +1,7 @@
 #include <QtWidgets>
 
 #include "mainwidget.h"
-#include "citationselectionwindow.h"
+#include "citationinfowindow.h"
 
 MainWidget::MainWidget(QWidget * parent)
 {
@@ -45,6 +45,6 @@ void MainWidget::createLayouts()
 
 void MainWidget::newCitation()
 {
-    CitationSelectionWindow * citationSelectionWindow = new CitationSelectionWindow(this);
-    citationSelectionWindow->show();
+    CitationInfoWindow * citationInfoWindow = new CitationInfoWindow(this);
+    citationInfoWindow->show();
 }
