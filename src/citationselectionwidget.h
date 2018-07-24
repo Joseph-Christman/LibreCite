@@ -14,6 +14,8 @@ class CitationSelectionWidget : public QWidget
 public:
     CitationSelectionWidget(QWidget * parent);
 
+private slots:
+    void bookCitation();
 private:
     QVBoxLayout * mainLayout;
 };
