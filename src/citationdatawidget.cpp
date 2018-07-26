@@ -28,7 +28,7 @@ bool CitationDataWidget::setTemplateLayout(int category)
 
     QTextStream in(&file);
 
-    QVBoxLayout * mainLayout = new QVBoxLayout;
+    mainLayout = new QVBoxLayout;
 
     while(!in.atEnd()) {
         QString line = in.readLine();
@@ -48,10 +48,34 @@ bool CitationDataWidget::setTemplateLayout(int category)
     setLayout(mainLayout);
     return true;
 }
-/*
-void CitationDataWidget::saveToJSON()
-{
-    QJsonObject json_obj;
-    json_obj[]
 
-} */
+void CitationDataWidget::saveToJSON(int category)
+{
+    QFile file("../citationTemplates/book.txt");
+    QVariantMap map;
+
+    QList<QHBoxLayout *> hBoxList = mainLayout->findChildren<QHBoxLayout *>();
+
+    int i = 0;
+    QList<QLabel *> labels;
+    QList<QLineEdit *> lineEdits;
+
+    foreach(const QHBoxLayout * current, hBoxList) {
+        labels += current->findChildren<QLabel *>();
+        lineEdits += current->findChildren<QLineEdit *>();
+    }
+
+    foreach(const QLabel * label, labels) {
+        foreach(const QLineEdit * lineEdit, lineEdits) {
+            map.insert(label->text(), lineEdit->text());
+        }
+    }
+
+    QJsonObject object = QJsonObject::fromVariantMap(map);
+    QJsonDocument document;
+    document.setObject(object);
+
+    QFile jsonFile("../save.txt");
+    jsonFile.open(QFile::WriteOnly);
+    jsonFile.write(document.toJson());
+}

@@ -3,7 +3,7 @@
 
 #include <QWidget>
 QT_BEGIN_NAMESPACE
-
+class QVBoxLayout;
 QT_END_NAMESPACE
 
 class CitationDataWidget : public QWidget
@@ -16,5 +16,8 @@ public:
 private:
     void setBookLayout();
     bool setTemplateLayout(int category);
+    void saveToJSON(int category);
+
+    QVBoxLayout * mainLayout;
 };
 #endif
