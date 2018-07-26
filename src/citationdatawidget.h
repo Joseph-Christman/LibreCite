@@ -15,5 +15,6 @@ public:
 
 private:
     void setBookLayout();
+    bool setTemplateLayout(int category);
 };
 #endif

@@ -1,0 +1,8 @@
+*Author
+Title
+Volume
+Total Volumes
+Edition
+Series
+Publisher
+Year

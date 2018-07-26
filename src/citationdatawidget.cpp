@@ -13,30 +13,45 @@ CitationDataWidget::CitationDataWidget(QWidget * parent, int category)
 }
 
 void CitationDataWidget::setBookLayout()
+{ 
+    setTemplateLayout(BOOK);
+}
+
+bool CitationDataWidget::setTemplateLayout(int category)
 {
-    QGridLayout * mainLayout = new QGridLayout;
+    QFile file("../citationTemplates/book.txt");
 
-    QLabel * titleLabel = new QLabel(tr("Title "));
-    QLineEdit * titleText = new QLineEdit;
+    if(!file.open(QIODevice::ReadOnly)) {
+        return false;
+        QMessageBox::information(0, "error", file.errorString());
+    }
 
-    QLabel * authorLabel = new QLabel(tr("Author "));
-    QLineEdit * authorText = new QLineEdit;
-    
-    QLabel * yearLabel = new QLabel(tr("Year "));
-    QLineEdit * yearText = new QLineEdit;
+    QTextStream in(&file);
 
+    QVBoxLayout * mainLayout = new QVBoxLayout;
 
-    QPushButton * submitButton = new QPushButton(tr("&Submit"));
+    while(!in.atEnd()) {
+        QString line = in.readLine();
+        QLabel * label = new QLabel(line);
+        QLineEdit  * text = new QLineEdit;
+        QHBoxLayout * hbox = new QHBoxLayout;
+        hbox->addWidget(label);
+        hbox->addWidget(text);
+        mainLayout->addLayout(hbox);
+    }
 
-    mainLayout->addWidget(titleLabel, 0, 0);
-    mainLayout->addWidget(titleText, 0, 1);
+    file.close();
 
-    mainLayout->addWidget(authorLabel, 1, 0);
-    mainLayout->addWidget(authorText, 1, 1);
-
-    mainLayout->addWidget(yearLabel, 2, 0);
-    mainLayout->addWidget(yearText, 2, 1);
-    mainLayout->addWidget(submitButton, 3, 0);
+    QPushButton * button = new QPushButton(tr("Submit"));
+    mainLayout->addWidget(button);
 
     setLayout(mainLayout);
+    return true;
 }
+/*
+void CitationDataWidget::saveToJSON()
+{
+    QJsonObject json_obj;
+    json_obj[]
+
+} */
