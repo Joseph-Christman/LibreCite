@@ -44,38 +44,40 @@ bool CitationDataWidget::setTemplateLayout(int category)
 
     QPushButton * button = new QPushButton(tr("Submit"));
     mainLayout->addWidget(button);
+    connect(button, SIGNAL(clicked()), this, SLOT(submit()));
 
     setLayout(mainLayout);
     return true;
 }
 
-void CitationDataWidget::saveToJSON(int category)
+void CitationDataWidget::submit()
 {
-    QFile file("../citationTemplates/book.txt");
+    saveToJSON();
+    //this->parent()->hide();
+
+}
+
+void CitationDataWidget::saveToJSON()
+{
     QVariantMap map;
 
     QList<QHBoxLayout *> hBoxList = mainLayout->findChildren<QHBoxLayout *>();
 
+
+    QList<QLabel *> labels = this->findChildren<QLabel *>();
+    QList<QLineEdit *> lineEdits = this->findChildren<QLineEdit *>();
+
+
     int i = 0;
-    QList<QLabel *> labels;
-    QList<QLineEdit *> lineEdits;
-
-    foreach(const QHBoxLayout * current, hBoxList) {
-        labels += current->findChildren<QLabel *>();
-        lineEdits += current->findChildren<QLineEdit *>();
-    }
-
-    foreach(const QLabel * label, labels) {
-        foreach(const QLineEdit * lineEdit, lineEdits) {
-            map.insert(label->text(), lineEdit->text());
-        }
+    for(i = 0; i < labels.count(); ++i) {
+        map.insert(labels[i]->text(), lineEdits[i]->text());
     }
 
     QJsonObject object = QJsonObject::fromVariantMap(map);
     QJsonDocument document;
     document.setObject(object);
 
-    QFile jsonFile("../save.txt");
+    QFile jsonFile("../save.json");
     jsonFile.open(QFile::WriteOnly);
     jsonFile.write(document.toJson());
 }

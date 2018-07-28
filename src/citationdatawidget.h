@@ -13,10 +13,13 @@ class CitationDataWidget : public QWidget
 public:
     CitationDataWidget(QWidget * parent, int category);
 
+private slots:
+    void submit();
+
 private:
     void setBookLayout();
     bool setTemplateLayout(int category);
-    void saveToJSON(int category);
+    void saveToJSON();
 
     QVBoxLayout * mainLayout;
 };
