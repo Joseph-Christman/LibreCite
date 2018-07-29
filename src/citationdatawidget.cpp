@@ -61,7 +61,9 @@ void CitationDataWidget::saveToJSON()
 {
     QVariantMap map;
 
-    QList<QHBoxLayout *> hBoxList = mainLayout->findChildren<QHBoxLayout *>();
+    QList<QHBoxLayout *> hBoxList = \
+        mainLayout->findChildren<QHBoxLayout *>();
+
 
 
     QList<QLabel *> labels = this->findChildren<QLabel *>();
