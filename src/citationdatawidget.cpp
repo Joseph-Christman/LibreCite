@@ -15,6 +15,7 @@ CitationDataWidget::CitationDataWidget(QWidget * parent, int category)
 void CitationDataWidget::setBookLayout()
 { 
     setTemplateLayout(BOOK);
+    _category = BOOK;
 }
 
 bool CitationDataWidget::setTemplateLayout(int category)
@@ -64,15 +65,17 @@ void CitationDataWidget::saveToJSON()
     QList<QHBoxLayout *> hBoxList = \
         mainLayout->findChildren<QHBoxLayout *>();
 
-
-
     QList<QLabel *> labels = this->findChildren<QLabel *>();
     QList<QLineEdit *> lineEdits = this->findChildren<QLineEdit *>();
-
 
     int i = 0;
     for(i = 0; i < labels.count(); ++i) {
         map.insert(labels[i]->text(), lineEdits[i]->text());
+    }
+    switch(_category) {
+        case BOOK:
+            map.insert("ENTRYTYPE", "Book");
+            break;
     }
 
     QJsonObject object = QJsonObject::fromVariantMap(map);

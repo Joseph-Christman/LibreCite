@@ -21,6 +21,8 @@ private:
     bool setTemplateLayout(int category);
     void saveToJSON();
 
+    int _category;
+
     QVBoxLayout * mainLayout;
 };
 #endif
