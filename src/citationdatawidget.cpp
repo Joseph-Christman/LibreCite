@@ -1,3 +1,6 @@
+#include <Python.h>
+#undef B0
+
 #include <QtWidgets>
 
 #include "categories.h"
@@ -82,7 +85,7 @@ void CitationDataWidget::saveToJSON()
     QJsonDocument document;
     document.setObject(object);
 
-    QFile jsonFile("../save.json");
+    QFile jsonFile("../tmpFiles/save.json");
     jsonFile.open(QFile::WriteOnly);
     jsonFile.write(document.toJson());
 }

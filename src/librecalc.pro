@@ -1,5 +1,8 @@
 QT += widgets
 
+QMAKE_CXXFLAGS += $$system(python3-config --cflags)
+QMAKE_CXXFLAGS += $$system(python3-config --ldflags)
+
 TEMPLATE = app
 TARGET = LibreCalc
 INCLUDEPATH += .
