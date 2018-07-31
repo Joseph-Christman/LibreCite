@@ -101,7 +101,18 @@ void CitationDataWidget::saveToJSON()
     QJsonDocument document;
     document.setObject(object);
 
-    QFile jsonFile("../tmpFiles/save.json");
+    QDir directory("../tmpFiles");
+    QStringList files = \
+        directory.entryList(QStringList() << "*.json", QDir::Files);
+    int fileCount = files.count();
+    ++fileCount;
+    QString fileNum = QString::number(fileCount);
+    
+    
+
+    QFile jsonFile("../tmpFiles/save" + fileNum + ".json");
+
+
     jsonFile.open(QFile::WriteOnly);
     jsonFile.write(document.toJson());
 }
