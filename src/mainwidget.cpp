@@ -22,9 +22,6 @@ Unless required by applicable law or agreed to in writing, software distributed
 MainWidget::MainWidget(QWidget * parent)
 {
     createLayouts();
-
-
-
 }
 
 void MainWidget::createLayouts()
@@ -43,7 +40,7 @@ void MainWidget::createLayouts()
     addRemoveWidget->setLayout(addRemoveLayout);
 
 
-    QVBoxLayout * citationLayout = new QVBoxLayout;
+    citationLayout = new QVBoxLayout;
     QWidget * scrollWidget = new QWidget();
 
     //populate citationLayout

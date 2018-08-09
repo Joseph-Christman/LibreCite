@@ -38,5 +38,6 @@ private:
 
     QVBoxLayout * mainLayout;
     QVBoxLayout * buttonLayout;
+    QVBoxLayout * citationLayout;
 };
 #endif
