@@ -21,6 +21,7 @@ Unless required by applicable law or agreed to in writing, software distributed
 
 #include "categories.h"
 #include "citationdatawidget.h"
+#include "citationdatawindow.h"
 
 CitationDataWidget::CitationDataWidget(QWidget * parent, int category)
 {
@@ -142,6 +143,7 @@ void CitationDataWidget::submit()
 {
     saveToJSON();
     //this->parent()->hide();
+    ((CitationDataWindow*)parentWidget())->close();
 
 }
 
