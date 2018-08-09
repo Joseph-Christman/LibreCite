@@ -1,7 +1,8 @@
 QT += widgets
 
-QMAKE_CXXFLAGS += $$system(python3-config --cflags)
-QMAKE_CXXFLAGS += $$system(python3-config --ldflags)
+LIBS += -L/usr/lib64/libpython3.6m.so -lpython3.6m
+INCLUDEPATH += /usr/include/python3.6m
+DEPENDPATH += /usr/include/python3.6m
 
 TEMPLATE = app
 TARGET = LibreCalc

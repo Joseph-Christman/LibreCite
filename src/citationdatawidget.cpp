@@ -70,6 +70,74 @@ bool CitationDataWidget::setTemplateLayout(int category)
     return true;
 }
 
+int jsonToBib(char * infile, char * outfile)
+{
+    //based on code from python.org tutorial
+    
+    PyObject *pName, *pModule, *pDict, *pFunc;
+    PyObject *pArgs, *pValue;
+    int i;
+
+    Py_Initialize(); 
+
+    PyRun_SimpleString("import sys; sys.path.append('.')\n");
+
+    pName = PyUnicode_FromString("jsontoBib.py");
+
+    pModule = PyImport_Import(pName);
+
+    Py_DECREF(pName);
+
+    if(pModule != NULL) {
+        pFunc = PyObject_GetAttrString(pModule, "convert");
+        if(pFunc && PyCallable_Check(pFunc)) {
+            pArgs = PyTuple_New(2);
+            //process args/tring(filename));
+            PyTuple_SetItem(pArgs, 0, PyUnicode_FromString(infile));
+            PyTuple_SetItem(pArgs, 1, PyUnicode_FromString(outfile));
+
+            pValue = PyObject_CallObject(pFunc, pArgs);
+            Py_DECREF(pArgs);
+            if(pValue != NULL) {
+                Py_DECREF(pValue);
+            }
+            else {
+                Py_DECREF(pFunc);
+                Py_DECREF(pModule);
+                PyErr_Print();
+                fprintf(stderr, "Call failed\n");
+                return 1;
+            }
+        }
+        else {
+            if(PyErr_Occurred()) {
+                PyErr_Print();
+             }
+        }
+        Py_XDECREF(pFunc);
+        Py_DECREF(pModule);
+    }
+    else {
+        PyErr_Print();
+        fprintf(stderr, "Failed to load convert");
+        return 1;
+    }
+    if(Py_FinalizeEx() < 0) {
+        return 120;
+    }
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
 void CitationDataWidget::submit()
 {
     saveToJSON();
