@@ -14,31 +14,22 @@ Unless required by applicable law or agreed to in writing, software distributed
 */
 
 
-#ifndef MAINWIDGET_H
-#define MAINWIDGET_H
+#ifndef JSONBUTTON_H
+#define JSONBUTTON_H
 
-#include <QWidget>
+#include <QPushButton>
 
 QT_BEGIN_NAMESPACE
-class QVBoxLayout;
+class QString;
 QT_END_NAMESPACE
 
-class MainWidget : public QWidget
+class JsonButton : public QPushButton
 {
     Q_OBJECT
-
 public:
-    MainWidget(QWidget * parent);
-
-private slots:
-    void addCitation();
+    JsonButton(QWidget * parent, QString fileName);
 
 private:
-    void createLayouts();
-    void readCitations(char * saveDirectory);
-
-    QVBoxLayout * mainLayout;
-    QVBoxLayout * buttonLayout;
-    QVBoxLayout * citationLayout;
+    QString fileName;
 };
 #endif

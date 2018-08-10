@@ -18,6 +18,7 @@ Unless required by applicable law or agreed to in writing, software distributed
 
 #include "mainwidget.h"
 #include "citationselectionwindow.h"
+#include "jsonbutton.h"
 
 MainWidget::MainWidget(QWidget * parent)
 {
@@ -42,6 +43,8 @@ void MainWidget::createLayouts()
 
     citationLayout = new QVBoxLayout;
     QWidget * scrollWidget = new QWidget();
+    
+    readCitations("../tmpFiles");
 
     //populate citationLayout
     
@@ -61,4 +64,33 @@ void MainWidget::addCitation()
 {
     CitationSelectionWindow * citationSelectionWindow = new CitationSelectionWindow(this);
     citationSelectionWindow->show();
+}
+
+void MainWidget::readCitations(char * saveDirectory)
+{
+    //A lot of this is reworking a Stack Overflow example
+    //https://www.youtube.com/watch?v=YH1DpwdkCiA
+
+    QDir directory(saveDirectory);
+    QStringList jsonFiles = directory.entryList(QStringList() << "*.json", QDir::Files);
+
+    QFile file;
+    QString val;
+
+    JsonButton * jsonButton;
+
+    foreach(QString fileName, jsonFiles) {
+        file.setFileName(QString("../tmpFiles/") + fileName);
+        file.open(QIODevice::ReadOnly | QIODevice::Text);
+        val = file.readAll();
+        file.close();
+        QJsonDocument d = QJsonDocument::fromJson(val.toUtf8());
+        QJsonObject sett2 = d.object();
+
+        jsonButton = new JsonButton(this, fileName);
+        jsonButton->setText(sett2.value(QString("Title")).toString());
+        citationLayout->addWidget(jsonButton);
+        jsonButton->show();
+    }
+
 }
