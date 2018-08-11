@@ -22,6 +22,7 @@ Unless required by applicable law or agreed to in writing, software distributed
 QT_BEGIN_NAMESPACE
 class QVBoxLayout;
 class QScrollArea;
+class QTimer;
 QT_END_NAMESPACE
 
 class MainWidget : public QWidget
@@ -34,17 +35,18 @@ public:
 private slots:
     void addCitation();
     void citationButton();
+    void readCitations();
 
 private:
     void createLayouts();
-    void readCitations(char * saveDirectory);
 
-
+    char * saveDirectory = "../tmpFiles";
 
     QVBoxLayout * mainLayout;
     QVBoxLayout * buttonLayout;
     QVBoxLayout * citationLayout;
     QScrollArea * scrollArea;
     QWidget * scrollWidget;
+    QTimer * timer;
 };
 #endif

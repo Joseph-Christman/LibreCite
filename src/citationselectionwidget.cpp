@@ -20,7 +20,8 @@ Unless required by applicable law or agreed to in writing, software distributed
 #include "citationdatawindow.h"
 #include "categories.h"
 
-CitationSelectionWidget::CitationSelectionWidget(QWidget * parent)
+CitationSelectionWidget::CitationSelectionWidget(QWidget * parent) :
+    QWidget(parent)
 {
     mainLayout = new QVBoxLayout;
 

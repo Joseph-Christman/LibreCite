@@ -26,8 +26,14 @@ Unless required by applicable law or agreed to in writing, software distributed
 MainWidget::MainWidget(QWidget * parent) : QWidget(parent)
 {
     createLayouts();
-    readCitations("../tmpFiles");
+    readCitations();
 
+    timer = new QTimer(this);
+
+    connect(timer, SIGNAL(timeout()),
+        this, SLOT(readCitations()));
+
+    timer->start(15000);
 }
 
 void MainWidget::createLayouts()
@@ -69,7 +75,7 @@ void MainWidget::addCitation()
     citationSelectionWindow->show();
 }
 
-void MainWidget::readCitations(char * saveDirectory)
+void MainWidget::readCitations()
 {
     //A lot of this is reworking a Stack Overflow example
     //https://www.youtube.com/watch?v=YH1DpwdkCiA

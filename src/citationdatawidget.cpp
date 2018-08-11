@@ -22,8 +22,10 @@ Unless required by applicable law or agreed to in writing, software distributed
 #include "categories.h"
 #include "citationdatawidget.h"
 #include "citationdatawindow.h"
+#include "mainwidget.h"
 
-CitationDataWidget::CitationDataWidget(QWidget * parent, int category)
+CitationDataWidget::CitationDataWidget(QWidget * parent, int category) :
+    QWidget(parent)
 {
     switch(category) {
     case BOOK:
@@ -132,9 +134,7 @@ int jsonToBib(char * infile, char * outfile)
 void CitationDataWidget::submit()
 {
     saveToJSON();
-    //this->parent()->hide();
     ((CitationDataWindow*)parentWidget())->close();
-
 }
 
 void CitationDataWidget::saveToJSON()
@@ -167,11 +167,8 @@ void CitationDataWidget::saveToJSON()
     int fileCount = files.count();
     ++fileCount;
     QString fileNum = QString::number(fileCount);
-    
-    
 
     QFile jsonFile("../tmpFiles/save" + fileNum + ".json");
-
 
     jsonFile.open(QFile::WriteOnly);
     jsonFile.write(document.toJson());
