@@ -21,6 +21,7 @@ Unless required by applicable law or agreed to in writing, software distributed
 
 QT_BEGIN_NAMESPACE
 class QVBoxLayout;
+class QScrollArea;
 QT_END_NAMESPACE
 
 class MainWidget : public QWidget
@@ -40,5 +41,7 @@ private:
     QVBoxLayout * mainLayout;
     QVBoxLayout * buttonLayout;
     QVBoxLayout * citationLayout;
+    QScrollArea * scrollArea;
+    QWidget * scrollWidget;
 };
 #endif

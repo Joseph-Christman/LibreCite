@@ -15,14 +15,18 @@ Unless required by applicable law or agreed to in writing, software distributed
 
 
 #include <QtWidgets>
+#include <stdio.h>
 
 #include "mainwidget.h"
 #include "citationselectionwindow.h"
 #include "jsonbutton.h"
+#include "mainwindow.h"
 
-MainWidget::MainWidget(QWidget * parent)
+MainWidget::MainWidget(QWidget * parent) : QWidget(parent)
 {
     createLayouts();
+    readCitations("../tmpFiles");
+
 }
 
 void MainWidget::createLayouts()
@@ -42,15 +46,13 @@ void MainWidget::createLayouts()
 
 
     citationLayout = new QVBoxLayout;
-    QWidget * scrollWidget = new QWidget();
+    scrollWidget = new QWidget();
     
-    readCitations("../tmpFiles");
-
-    //populate citationLayout
+    
     
     scrollWidget->setLayout(citationLayout);
 
-    QScrollArea * scrollArea = new QScrollArea;
+    scrollArea = new QScrollArea;
     scrollArea->setWidget(scrollWidget);
 
     mainLayout = new QVBoxLayout;
@@ -79,6 +81,16 @@ void MainWidget::readCitations(char * saveDirectory)
 
     JsonButton * jsonButton;
 
+    delete citationLayout;
+    citationLayout = new QVBoxLayout;
+
+    delete scrollWidget;
+    scrollWidget = new QWidget(this);
+
+    delete scrollArea;
+    scrollArea = new QScrollArea(this);
+
+
     foreach(QString fileName, jsonFiles) {
         file.setFileName(QString("../tmpFiles/") + fileName);
         file.open(QIODevice::ReadOnly | QIODevice::Text);
@@ -92,5 +104,13 @@ void MainWidget::readCitations(char * saveDirectory)
         citationLayout->addWidget(jsonButton);
         jsonButton->show();
     }
+    citationLayout->update();
+    
+    scrollWidget->setLayout(citationLayout);
+    scrollArea->setWidget(scrollWidget);
+    this->hide();
+    this->show();
+
+    mainLayout->addWidget(scrollArea);
 
 }
