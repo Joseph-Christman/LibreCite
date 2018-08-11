@@ -21,6 +21,7 @@ Unless required by applicable law or agreed to in writing, software distributed
 #include "citationselectionwindow.h"
 #include "jsonbutton.h"
 #include "mainwindow.h"
+#include "citationtypewindow.h"
 
 MainWidget::MainWidget(QWidget * parent) : QWidget(parent)
 {
@@ -102,6 +103,9 @@ void MainWidget::readCitations(char * saveDirectory)
         jsonButton = new JsonButton(this, fileName);
         jsonButton->setText(sett2.value(QString("Title")).toString());
         citationLayout->addWidget(jsonButton);
+
+        connect(jsonButton, SIGNAL(clicked()), this, SLOT(citationButton()));
+
         jsonButton->show();
     }
     citationLayout->update();
@@ -113,4 +117,12 @@ void MainWidget::readCitations(char * saveDirectory)
 
     mainLayout->addWidget(scrollArea);
 
+}
+
+void MainWidget::citationButton()
+{
+    CitationTypeWindow * citationTypeWindow = \
+        new CitationTypeWindow(this);
+
+    citationTypeWindow->show();
 }

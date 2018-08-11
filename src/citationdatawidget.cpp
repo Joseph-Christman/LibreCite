@@ -129,16 +129,6 @@ int jsonToBib(char * infile, char * outfile)
     return 0;
 }
 
-
-
-
-
-
-
-
-
-
-
 void CitationDataWidget::submit()
 {
     saveToJSON();

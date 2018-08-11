@@ -14,37 +14,11 @@ Unless required by applicable law or agreed to in writing, software distributed
 */
 
 
-#ifndef MAINWIDGET_H
-#define MAINWIDGET_H
+#include <QtWidgets>
 
-#include <QWidget>
+#include "citationtypewindow.h"
 
-QT_BEGIN_NAMESPACE
-class QVBoxLayout;
-class QScrollArea;
-QT_END_NAMESPACE
-
-class MainWidget : public QWidget
+CitationTypeWindow::CitationTypeWindow(QWidget * parent) : QMainWindow(parent)
 {
-    Q_OBJECT
 
-public:
-    MainWidget(QWidget * parent);
-
-private slots:
-    void addCitation();
-    void citationButton();
-
-private:
-    void createLayouts();
-    void readCitations(char * saveDirectory);
-
-
-
-    QVBoxLayout * mainLayout;
-    QVBoxLayout * buttonLayout;
-    QVBoxLayout * citationLayout;
-    QScrollArea * scrollArea;
-    QWidget * scrollWidget;
-};
-#endif
+}
