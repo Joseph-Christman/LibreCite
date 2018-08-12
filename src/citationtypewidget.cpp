@@ -20,5 +20,12 @@ CitationTypeWidget::CitationTypeWidget(QWidget * parent, QString fileName) :
     QWidget(parent)
 {
     _fileName = fileName;
-}
 
+    QVBoxLayout * citationStyleLayout = new QVBoxLayout;
+    
+    QPushButton * mlaButton = new QPushButton(tr("&MLA"));
+
+    citationStyleLayout->addWidget(mlaButton);
+
+    setLayout(citationStyleLayout);
+}
