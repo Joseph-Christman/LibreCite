@@ -99,8 +99,6 @@ void MainWidget::readCitations()
 
     QSignalMapper * signalMapper = new QSignalMapper(this);
 
-    QList<JsonButton *> jButtonList;
-
     foreach(QString fileName, jsonFiles) {
         file.setFileName(QString("../tmpFiles/") + fileName);
         file.open(QIODevice::ReadOnly | QIODevice::Text);
@@ -112,7 +110,6 @@ void MainWidget::readCitations()
         jsonButton = new JsonButton(this, fileName);
         jsonButton->setText(sett2.value(QString("Title")).toString());
 
-        jButtonList.append(jsonButton);
         citationLayout->addWidget(jsonButton);
 
         connect(jsonButton, SIGNAL(clicked()), signalMapper, SLOT(map()));

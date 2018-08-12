@@ -29,7 +29,11 @@ class CitationTypeWidget : public QWidget
 public:
     CitationTypeWidget(QWidget * parent, QString fileName);
 
+private slots:
+    void printCitation(int styleCitation);
+
 private:
+    int jsonToBib(char * infile, char * outfile);
     QString _fileName;
 };
 

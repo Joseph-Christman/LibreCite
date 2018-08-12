@@ -30,5 +30,4 @@ def convert(inFile, outFile):
     with open(str(outFile), 'w') as bibfile:
         bibfile.write(writer.write(db))
 
-convert("test.JSON", "outfile.bib")
 
