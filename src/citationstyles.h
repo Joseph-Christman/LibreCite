@@ -14,24 +14,4 @@ Unless required by applicable law or agreed to in writing, software distributed
 */
 
 
-#ifndef CITATIONTYPEWINDOW_H
-#define CITATIONTYPEWINDOW_H
-
-#include <QMainWindow>
-
-QT_BEGIN_NAMESPACE
-class QWidget;
-QT_END_NAMESPACE
-
-class CitationTypeWindow : public QMainWindow
-{
-    Q_OBJECT
-
-public:
-    CitationTypeWindow(QWidget * widget, QString fileName);
-
-private:
-    QString _fileName;
-};
-
-#endif 
+#define MLA 1

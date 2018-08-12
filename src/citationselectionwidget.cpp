@@ -13,7 +13,6 @@ Unless required by applicable law or agreed to in writing, software distributed
  specific language governing permissions and limitations under the License.
 */
 
-
 #include <QtWidgets>
 
 #include "citationselectionwidget.h"

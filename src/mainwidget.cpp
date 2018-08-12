@@ -140,7 +140,7 @@ void MainWidget::readCitations()
 void MainWidget::citationButton(QString fileName)
 {
     CitationTypeWindow * citationTypeWindow = \
-        new CitationTypeWindow(this);
+        new CitationTypeWindow(this, fileName);
 
     citationTypeWindow->show();
 }

@@ -17,8 +17,13 @@ Unless required by applicable law or agreed to in writing, software distributed
 #include <QtWidgets>
 
 #include "citationtypewindow.h"
+#include "citationtypewidget.h"
 
-CitationTypeWindow::CitationTypeWindow(QWidget * parent) : QMainWindow(parent)
+CitationTypeWindow::CitationTypeWindow(QWidget * parent, QString fileName) : QMainWindow(parent)
 {
+    _fileName = fileName;
 
+    CitationTypeWidget * citationTypeWidget = \
+        new CitationTypeWidget(this, fileName);
 }
+
