@@ -34,7 +34,7 @@ public:
 
 private slots:
     void addCitation();
-    void citationButton();
+    void citationButton(QString fileName);
     void readCitations();
 
 private:

@@ -135,6 +135,7 @@ void MainWidget::readCitations()
     this->show();
 
     mainLayout->addWidget(scrollArea);
+
 }
 
 void MainWidget::citationButton(QString fileName)
