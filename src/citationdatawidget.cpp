@@ -96,7 +96,7 @@ void CitationDataWidget::saveToJSON()
     switch(_category) {
         case BOOK:
             map.insert("ENTRYTYPE", "Book");
-            map.insert("ID", labels[1]->text());
+            map.insert("ID", lineEdits[1]->text());
             break;
     }
 
