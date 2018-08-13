@@ -13,22 +13,25 @@ Unless required by applicable law or agreed to in writing, software distributed
  specific language governing permissions and limitations under the License.
 */
 
-#ifndef CITATIONDISPLAYWINDOW_H
-#define CITATIONDISPLAYWINDOW_H
 
 #include <QtWidgets>
+#include "citationdisplaywidget.h"
 
-QT_BEGIN_NAMESPACE
-class QWidget;
-class QString;
-QT_END_NAMESPACE
 
-class CitationDisplayWindow : public QMainWindow
+CitationDisplayWidget::CitationDisplayWidget(QWidget * parent, \ 
+                                             QString citeLocation) 
+                                             : QWidget(parent)
 {
-    Q_OBJECT
+    QFile file;
+    file.setFileName(citeLocation);
+    file.open(QIODevice::ReadOnly | QIODevice::Text);
+    QString citationTxt = file.readAll();
+    file.close();
 
-public:
-        CitationDisplayWindow(QWidget * parent, QString citeLocation);
+    QTextEdit * qtextEdit = new QTextEdit(citationTxt, this);
 
-};
-#endif
+    QVBoxLayout * mainLayout = new QVBoxLayout;
+    mainLayout->addWidget(qtextEdit);
+
+    setLayout(mainLayout);
+}

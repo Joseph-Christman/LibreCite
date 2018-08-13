@@ -13,22 +13,21 @@ Unless required by applicable law or agreed to in writing, software distributed
  specific language governing permissions and limitations under the License.
 */
 
-#ifndef CITATIONDISPLAYWINDOW_H
-#define CITATIONDISPLAYWINDOW_H
 
-#include <QtWidgets>
+#ifndef CITATIONDISPLAYWIDGET_H
+#define CITATIONDISPLAYWIDGET_H
+
+#include <QWidget>
 
 QT_BEGIN_NAMESPACE
-class QWidget;
-class QString;
+
 QT_END_NAMESPACE
 
-class CitationDisplayWindow : public QMainWindow
+class CitationDisplayWidget : public QWidget
 {
     Q_OBJECT
 
 public:
-        CitationDisplayWindow(QWidget * parent, QString citeLocation);
-
+    CitationDisplayWidget(QWidget * parent, QString citeLocation);
 };
 #endif
