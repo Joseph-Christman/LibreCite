@@ -17,10 +17,10 @@ Unless required by applicable law or agreed to in writing, software distributed
 #ifndef CITATIONDATAWINDOW_H
 #define CITATIONDATAWINDOW_H
 
-#include <QtWidgets>
+#include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
-
+class QWidget;
 QT_END_NAMESPACE
 
 class CitationDataWindow : public QMainWindow

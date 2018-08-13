@@ -19,6 +19,7 @@ Unless required by applicable law or agreed to in writing, software distributed
 #include <QtWidgets>
 #include "citationtypewidget.h"
 #include "citationstyles.h"
+#include "citationdisplaywindow.h"
 
 CitationTypeWidget::CitationTypeWidget(QWidget * parent, QString fileName) :
     QWidget(parent)
@@ -106,8 +107,95 @@ int CitationTypeWidget::jsonToBib(char * infile, char * outfile)
     return 0;
 }
 
+QString CitationTypeWidget::getID()
+{
+    QFile file;
+    QString val;
+
+    file.setFileName(QString("../tmpFiles/") + _fileName);
+    file.open(QIODevice::ReadOnly | QIODevice::Text);
+    val = file.readAll();
+    file.close();
+    
+    QJsonDocument d = QJsonDocument::fromJson(val.toUtf8());
+    QJsonObject sett2 = d.object();
+
+    return sett2.value(QString("ID")).toString();
+}
+
+int CitationTypeWidget::bibToCitation(QString id)
+{
+    //based on code from python.org tutorial
+    
+    PyObject *pName, *pModule, *pDict, *pFunc;
+    PyObject *pArgs, *pValue;
+    int i;
+
+    QString _infile = QString("../tmpFiles/") + QString("a.bib");
+
+    QByteArray ifile = _infile.toLatin1();
+    QByteArray idArray = id.toLatin1();
+
+    Py_Initialize(); 
+
+    PyRun_SimpleString("import sys; sys.path.append('.')\n");
+
+    pName = PyUnicode_FromString("bibtocite");
+
+    pModule = PyImport_Import(pName);
+
+    Py_DECREF(pName);
+
+    if(pModule != NULL) {
+        pFunc = PyObject_GetAttrString(pModule, "bibToCite");
+        if(pFunc && PyCallable_Check(pFunc)) {
+            pArgs = PyTuple_New(2);
+            //process args/tring(filename));
+            PyTuple_SetItem(pArgs, 0, \
+                PyUnicode_FromString(ifile.data()));
+            PyTuple_SetItem(pArgs, 1, \
+                PyUnicode_FromString(idArray.data()));
+
+            pValue = PyObject_CallObject(pFunc, pArgs);
+            Py_DECREF(pArgs);
+            if(pValue != NULL) {
+                Py_DECREF(pValue);
+            }
+            else {
+                Py_DECREF(pFunc);
+                Py_DECREF(pModule);
+                PyErr_Print();
+                fprintf(stderr, "Call failed\n");
+                return 1;
+            }
+        }
+        else {
+            if(PyErr_Occurred()) {
+                PyErr_Print();
+             }
+        }
+        Py_XDECREF(pFunc);
+        Py_DECREF(pModule);
+    }
+    else {
+        PyErr_Print();
+        fprintf(stderr, "Failed to load convert");
+        return 1;
+    }
+    if(Py_FinalizeEx() < 0) {
+        return 120;
+    }
+    return 0;
+}
+
 void CitationTypeWidget::printCitation(int category)
 {
     QByteArray ba = _fileName.toLatin1();
     jsonToBib((char *)ba.data(), "a.bib");
+    QString id = getID();
+    bibToCitation(id);
+
+    CitationDisplayWindow * citationDisplayWindow = \
+        new CitationDisplayWindow(this, QString("out.txt")); 
+    citationDisplayWindow->show();
 }

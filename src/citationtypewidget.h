@@ -19,7 +19,7 @@ Unless required by applicable law or agreed to in writing, software distributed
 #include <QWidget>
 
 QT_BEGIN_NAMESPACE
-
+class QString;
 QT_END_NAMESPACE
 
 class CitationTypeWidget : public QWidget
@@ -34,6 +34,10 @@ private slots:
 
 private:
     int jsonToBib(char * infile, char * outfile);
+    QString getID();
+    int bibToCitation(QString id);
+
+
     QString _fileName;
 };
 

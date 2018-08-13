@@ -36,11 +36,15 @@ def bibToCite(bibfile, ID):
     bib_style = CitationStylesStyle(style_path, validate=False)
 
     bibliography = CitationStylesBibliography(bib_style, bib_source,
+                                              formatter.plain)
 
     citation1 = Citation([CitationItem(ID)])
 
     bibliography.register(citation1)
 
-    for item in bibliography.bibliography():
-        with open('out.txt', 'w') as f:
-            print(str(item))
+    
+    with open('out.txt', 'w') as f:
+        for item in bibliography.bibliography():
+            print(str(item), file=f)
+
+
