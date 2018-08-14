@@ -26,12 +26,22 @@ Screen 4:
 
 ### Compilation Instructions
 WARNING: APPLICATION ISN'T DONE AND THESE INSTRUCTIONS ARE REALLY ROUGH.
-INSTRUCTIONS WILL BE UPDATED IN THE NEAR FUTURE.
+INSTRUCTIONS WILL BE UPDATED AS PROGRESS IS MADE
+
+Libraries used for this project are QTWidgets, CPython, citeproc-py,
+citeproc-py-styles and BibTexParser. All python libraries are Python3.
+You will need to make sure their equilivents are installed on your distro.
+Currently, things are Unix only.
+
+The file that produces the make file is librecalc.pro. Unfortunately,
+the INCLUDEPATH and DEPENDPATH variables are currently hardcoded. You will
+probably need to modify them to point to the headers for your python3
+header files. Hoping to come up with a solution for this.
 
 To obtain a Makefile, type `qmake -o Makefile librecalc.pro` while
 you are in the src directory.
 
-To compile the program, type `make`.
+To compile the program, type make.
 
 ### Must have Features
 
