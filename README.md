@@ -1,28 +1,14 @@
 # LibreCite
-Librecite will be a QT app that provides a free and libre way to produce
-citations of books, websites, and more. 
+Librecite is a proof of concept of a QT app that provides a free and 
+libre way to produce citations of books, websites, and more. It uses the 
+CSL format to process citations and convert them to the proper format.
 
-### The Layout Plan
-    
-Screen 1:
+The majority of the code is in C++ with some Python for key components
+such as the CSL processor. If someone were to write a processor in
+C or C++, I would be very grateful. 
 
-    -New Project
-
-    -Open Project
-
-Screen 2:
-
-    -a way to view completed citations
-
-    -add citations
-
-Screen 3:
-
-    -Select between citation styles
-
-Screen 4:
-
-    -fill out information for citation
+### Contact
+If you wish to contact me, your best bet is jwc7@pdx.edu or via Github.
 
 ### Compilation Instructions
 WARNING: APPLICATION ISN'T DONE AND THESE INSTRUCTIONS ARE REALLY ROUGH.
@@ -43,16 +29,7 @@ you are in the src directory.
 
 To compile the program, type make.
 
-### Must have Features
-
--Support for MLA, APA, and my personal internal citation style.
-
--Ability to save and load in some format (XML possibly? QT seems to have
-native support for that)
-
--The basic format in the layout plan
-
-### Stretch Goals
+### Future
 
 -Automatic archiving of websites
 
