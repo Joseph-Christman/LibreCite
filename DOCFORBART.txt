@@ -1,0 +1,20 @@
+Hi, this is a doc for Bart. It will probably be deleted in a couple
+weeks. It's mostly just a summary of the current state of the project.
+
+What works:
+-The new project button will open a project in tmpFiles. You can add
+book citations to this project. The project will be restored upon opening.
+
+-If you click a previously made citaition's button, you can get the MLA 
+citation
+
+What needs work:
+-Need a lot more types of citations (movies, articles, etc)
+
+-A lot more citation categories (APA, etc)
+
+-The ability to have multiple folders
+
+-The menu bar
+
+-The Open Project button 
